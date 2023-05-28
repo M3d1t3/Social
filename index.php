@@ -3,7 +3,7 @@
     session_start();
 
     // Verificar si hay una sesión iniciada
-    if (isset($_SESSION['email'])) {
+    if (isset($_SESSION['correo'])) {
         // Sesión iniciada, redirigir al usuario a otra página
         header('Location: portada.php');
         exit();
@@ -24,15 +24,49 @@
 
     <script>
         $(document).ready(function(){
+            $("#error").hide();
+
+            //Borrar mensaje de error al pulsar en el input
+            $("#email").keydown(function(){
+                $("#error").hide(500);
+            });
+            $("#pass").keydown(function(){
+                $("#error").hide(500);
+            });
+
             //Comprobar la pulsacion de inicio de sesion
             $("#btnIniciar").click(function(){
                 event.preventDefault();//Evita el envio del formulario
-                let email = $("#email").val();
+                let correo = $("#email").val();
                 let pass = $("#pass").val();
                 //Comprobar que los campos no estén vacios
-                if((email=='') || (pass=='')){
+                if((correo=='') || (pass=='')){
                     //Algun campo está vacio
+                    $("#mensajeError").text("Los campos no pueden estar vacíos");
+                    $("#error").show(500);
                 }
+
+                //Realizar una consulta Ajax para comprobar la validez de los datos
+                $.ajax({
+                    type: 'POST',
+                    url: 'api/comprobarUsuario.php',
+                    data: {correo:correo,pass:pass},
+                    dataType: 'json',
+                    success: function(data){
+                        if(data.codigo==1){
+                            //La conexion ha sido buena, vamos a la pagina principal, donde ya existe una sesion
+                            location.href ='portada.php';
+                        }else{
+                            //El usuario y/o la contraseña son erroneas
+                            $("#mensajeError").text("El correo y/o la pass son erróneas");
+                            $("#error").show(500);
+                        }
+                    },
+                    error: function(){
+                        alert("Error");
+                    }
+
+                });
             });
         });
     </script>
@@ -53,6 +87,10 @@
 
                 <div class="mb-4 text-lg">
                     <input id="pass" class="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="Password" name="name" placeholder="Password" />
+                </div>
+
+                <div id="error" class="error">
+                    <h1 id="mensajeError">Los campos no pueden estar vacíos</h1>
                 </div>
 
                 <div class="mb-8 flex flex-col items-center">
