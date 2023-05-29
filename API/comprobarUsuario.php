@@ -9,7 +9,7 @@
     $code = 0;
 
     //Consultar a la BD si el correo y la pass son validas
-    $consulta = "select * from usuarios where email ='" . $correo . "' and pass ='" . $pass . "';";
+    $consulta = "select * from usuarios where email ='" . $correo . "' and pass = binary '" . $pass . "' ;";
     $resultado = $conn->query($consulta);
     while ($fila = mysqli_fetch_array($resultado)){
         //Si es valida generamos un resultado y un token
