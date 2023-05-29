@@ -40,7 +40,9 @@
             $("#btnCerrar").click(function(){
                 window.location.href = 'api/cerrarSesion.php';
             });
-
+            $("#menu_nav").click(function(){
+                $("#menu_desplegable").toggle(300);
+            });
             
         });
     </script>
@@ -49,13 +51,21 @@
     <nav class="">
         <div id="logo_nav"><img src="imagenes/marcador-de-alfiler.png" alt=""><h1>Social Web</h1></div>
         <div id="buscador_nav"><input type="text" placeholder="Buscar personas..."></div>
-        <div id="menu_nav">
-            <button id="btnHamburguesa" class="hamburguesa-btn">
-                <span class="hamburguesa-line"></span>
-                <span class="hamburguesa-line"></span>
-                <span class="hamburguesa-line"></span>
-            </button>
-            <img id="imagen_nav" src="<?php echo $foto ?>" alt="">
+        <div id="derecha_nav">
+            <div id="mensaje_nav"><img src="imagenes/charla.png" alt=""></div>
+            <div id="menu_nav">
+                <button id="btnHamburguesa" class="hamburguesa-btn">
+                    <span class="hamburguesa-line"></span>
+                    <span class="hamburguesa-line"></span>
+                    <span class="hamburguesa-line"></span>
+                </button>
+                <img id="imagen_nav" src="<?php echo $foto ?>" alt="">
+            </div>
+                <ul id="menu_desplegable" class="menu-desplegable hidden1">
+                    <li><a href="#">Opción 1</a></li>
+                    <li><a href="#">Opción 2</a></li>
+                    <li><a href="#">Opción 3</a></li>
+                </ul>
         </div>
     </nav>
     <button id="btnCerrar">Cerrar Sesión</button>
