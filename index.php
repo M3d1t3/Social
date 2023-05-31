@@ -90,7 +90,7 @@
                 </div>
 
                 <div id="error" class="error">
-                    <h1 id="mensajeError">Los campos no pueden estar vacíos</h1>
+                    <h1 id="mensajeError" class="hidden1">Los campos no pueden estar vacíos</h1>
                 </div>
 
                 <div class="mb-8 flex flex-col items-center">

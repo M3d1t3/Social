@@ -55,11 +55,12 @@ nav {
   #buscador_nav {
     display: flex;
     align-items: center;
+    width: 40%;
   }
 
   #buscador_nav input{
     background-color: #F3F4F6;
-    width: 400px;
+    width: 100%;
     height: 40px;
     border-radius: 10px;
     padding: 10px 20px;
@@ -144,11 +145,47 @@ nav {
   .hidden1 {
     display: none;
   }
+
+
+  #bloque_principal {
+    margin: 0 auto;
+    width: 1200px; 
+    height: 300px;
+    min-width: 80%;
+    max-width: 98%;
+    box-sizing: border-box; 
+    padding-top: 15px;
+  }
+
+  #pantalla_principal{
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .modulo{
+    width: 50%;
+    float: left;
+    margin-bottom: 20px;
+  }
+
+  .contenedor{
+    width: 95%;
+    max-height: 95%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px -2px rgba(0, 0, 0, 0.1);
+  }
   
   
   @media (max-width: 768px) {
     #buscador_nav {
       display: none;
+    }
+
+    .modulo{
+      width: 100%;
     }
   }
   

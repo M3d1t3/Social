@@ -65,9 +65,29 @@
                     <li><a href="#">Opción 1</a></li>
                     <li><a href="#">Opción 2</a></li>
                     <li><a href="#">Opción 3</a></li>
+                    <li id="btnCerrar"><a href="#">Cerrar sesión</a></li>
                 </ul>
         </div>
     </nav>
-    <button id="btnCerrar">Cerrar Sesión</button>
+
+    <div id="bloque_principal">
+        <div id="pantalla_principal">
+            <div class="modulo">
+                <div class="contenedor">
+                    
+                </div>
+            </div>
+            <div class="modulo">
+                <div class="contenedor">
+                    
+                </div>
+            </div>
+            <div class="modulo">
+                <div class="contenedor">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
