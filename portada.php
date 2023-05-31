@@ -71,23 +71,35 @@
     </nav>
 
     <div id="bloque_principal">
-        <div id="pantalla_principal">
+        <div id="pantalla_principal"><!--Pantalla principal de la red social-------------------------------------------------------------->
             <div class="modulo">
                 <div class="contenedor">
-                    
+                    <!--Modulo del perfil de usuario-->
                 </div>
             </div>
             <div class="modulo">
                 <div class="contenedor">
-                    
+                    <!--Modulo de creacion de un nuevo post-->
                 </div>
             </div>
             <div class="modulo">
                 <div class="contenedor">
-                    
+                    <!--Modulo con los posibles amigos, usa todo el ancho-->
+                </div>
+            </div>
+            <div class="modulo">
+                <div class="contenedor">
+                    <!--Modulo con las nuevas actualizaciones de los amigos-->
                 </div>
             </div>
         </div>
+        <div id="pantalla_perfil"><!--Pantalla para configurar el perfil del usuario------------------------------------------------------------>
+
+        </div>
+    </div>
+
+    <div id="footer">
+
     </div>
 </body>
 </html>
