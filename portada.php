@@ -31,25 +31,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="imagenes/marcador-de-alfiler.png" type="image/png">
     <link href="dist/output.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/portada.css">
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="js/portada.js"></script>
     <title>Red Social - Diego Sánchez</title>
     <script>
         $(document).ready(function(){
+            //Procesar al iniciar la pagina-------------------------------------------------
+            $("#bloque_spinner").hide();
+
+
+            //Boton de cerrar sesion
             $("#btnCerrar").click(function(){
                 window.location.href = 'api/cerrarSesion.php';
             });
+
+            //Boton hamburguesa de despliegue de menu
             $("#menu_nav").click(function(){
                 $("#menu_desplegable").toggle(300);
             });
+
+            moduloPerfil();
             
         });
     </script>
 </head>
 <body id="body_portada">
     <div id="bloque_spinner">
-        
+        <div id="spinner">
+
+        </div>
     </div>
 
     <nav class="">
@@ -80,13 +93,21 @@
             <div class="modulo">
                 <div class="contenedor">
                     <!--Modulo del perfil de usuario-->
-                    
+                    <div id="bloqueFoto"><img id="fotoPerfil" style="max-width:25%;border-radius:50%;border:5px solid lightgrey;" src="" alt=""></div>
+                    <h1 id="nombrePerfil"></h1>
+                    <div id="bloqueSegPerfil">
+                        <div class="seguimientos" id="bloqueSeguidores"><h1 id="seguidores"></h1><h1 style="color: #A6ACAF;">Seguidores</h1></div>
+                        <div class="seguimientos" id="bloqueSeguidos"><h1 id="seguidos"></h1><h1 style="color: #A6ACAF;">Seguidos</h1></div>
+                        <div class="seguimientos" id="bloquePosts"><h1 id="posts"></h1><h1 style="color: #A6ACAF;">Posts</h1></div>
+                    </div>
                 </div>
             </div>
             <div class="modulo">
                 <div class="contenedor">
                     <!--Modulo de creacion de un nuevo post-->
-                    
+                    <form id="areaForm" action="">
+                        <input type="textarea" placeholder="Comparte tus pensamientos...">
+                    </form>
                 </div>
             </div>
             <div class="modulo">
@@ -110,6 +131,9 @@
 
         </div>
         <div id="pantalla_configuracion"><!--Pantalla para configuracion de la cuenta------------------------------------------------------------>
+
+        </div>
+        <div id="pantalla_mensajes"><!--Pantalla para ver los mensajes privados------------------------------------------------------------>
 
         </div>
     </div>
