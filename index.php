@@ -94,7 +94,7 @@
                 </div>
 
                 <div class="mb-8 flex flex-col items-center">
-                    <h1 class="mb-2 text-sm" style="cursor: pointer">Crear una cuenta</h1>
+                    <h1 class="mb-2 text-sm" style="cursor: pointer"><a href="registro.php">Crear una cuenta</a></h1>
                     <h1 class="mb-2 text-sm" style="cursor: pointer">Recuperar contraseña</h1>
                 </div>
 

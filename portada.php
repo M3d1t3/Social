@@ -53,6 +53,11 @@
                 $("#menu_desplegable").toggle(300);
             });
 
+            //Boton del envio de nuevo post
+            $("#btnForm").click(function(){
+                event.preventDefault();
+            });
+
             moduloPerfil();
             
         });
@@ -106,7 +111,8 @@
                 <div class="contenedor">
                     <!--Modulo de creacion de un nuevo post-->
                     <form id="areaForm" action="">
-                        <input type="textarea" placeholder="Comparte tus pensamientos...">
+                        <textarea name="" id="" cols="30" rows="10" placeholder="Comparte tus ideas..."></textarea>
+                        <button id="btnForm">Postear</button>
                     </form>
                 </div>
             </div>

@@ -251,12 +251,31 @@ nav {
   padding: 20px;
 }
 
-#areaForm input{
-  width: 100%;
-  background-color: rgb(235, 234, 234);
-  padding: 5px;
-  border-radius: 10px;
+#areaForm textarea{
+    resize: vertical;
+    height: 200px;
+    width: 100%;
+    background-color: #f2f2f2;
+    overflow-y: auto;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 10px;
 }
+
+#areaForm button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+ #areaForm button:hover {
+    background-color: #0056b3;
+  }
  
   @media (max-width: 768px) {
     #logo_nav img{
