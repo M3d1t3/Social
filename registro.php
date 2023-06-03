@@ -30,28 +30,62 @@
             $("#email").keydown(function(){
                 $("#error").hide(500);
             });
+            $("#nombre").keydown(function(){
+                $("#error").hide(500);
+            });
+            $("#pass").keydown(function(){
+                $("#error").hide(500);
+            });
+            $("#repitePass").keydown(function(){
+                $("#error").hide(500);
+            });
+            $("#apellido").keydown(function(){
+                $("#error").hide(500);
+            });
             
 
-            
-            $.ajax({
-                    type: 'POST',
-                    url: 'api/comprobarCorreo.php',
-                    data: {correo:'sanchezpomares130@gmail.com'},
-                    dataType: 'json',
-                    success: function(data){
-                        if(data.codigo==0){
-                            //La conexion ha sido buena, vamos a la pagina principal, donde ya existe una sesion
-                            alert("El correo no existe aun");
-                        }else{
-                            //El usuario y/o la contraseña son erroneas
-                            $("#mensajeError").text("El correo ya existe");
-                            $("#error").show(500);
-                        }
-                    },
-                    error: function(){
-                        alert("Error");
+            $("#btnRegistrar").click(function(){
+                event.preventDefault();//Evita el envio del formulario
+                let correo = $("#email").val();
+                let pass = $("#pass").val();
+                let repitePass = $("#repitePass").val();
+                let nombre = $("#nombre").val();
+                let apellido = $("#apellido").val();
+
+                //Comprobar que ningun campo está vacio
+                if((correo == '') || (pass == '') || (repitePass == '') || (nombre == '') || (apellido == '')){
+                    $("#mensajeError").text("Ningún campo puede estar vacio");
+                    $("#error").show(500);
+                }else{
+                    //Comprobar que las dos contraseñas son iguales
+                    if(pass != repitePass){
+                        $("#mensajeError").text("Las contraseñas no coinciden");
+                        $("#error").show(500);
+                    }else{
+                        //Todo está correcto asi que mandamos la comprobacion del correo
+                        $.ajax({
+                            type: 'POST',
+                            url: 'api/comprobarCorreo.php',
+                            data: {correo:correo},
+                            dataType: 'json',
+                            success: function(data){
+                                if(data.codigo==0){
+                                    //La conexion ha sido buena, vamos a la pagina principal, donde ya existe una sesion
+                                    $("#formRegistro").submit();
+                                }else{
+                                    //El usuario y/o la contraseña son erroneas
+                                    $("#mensajeError").text("El correo ya existe");
+                                    $("#error").show(500);
+                                }
+                            },
+                            error: function(){
+                                alert("Error");
+                            }
+                        });
                     }
-                });
+                }
+            });
+
 
             
         });
@@ -66,21 +100,21 @@
                 <h1 class="mb-2 text-2xl">Social Web</h1>
                 <span class="text-gray-300">Diego Sánchez</span>
             </div>
-            <form action="#">
+            <form id="formRegistro" action="api/registrarUsuario.php" method="POST">
                 <div class="mb-4 text-lg">
-                    <input id="nombre" class="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="text" name="nombre" placeholder="Nombre" />
+                    <input id="nombre" name="nombre" class="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="text" name="nombre" placeholder="Nombre" />
                 </div>
                 <div class="mb-4 text-lg">
-                    <input id="apellido" class="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="text" name="apellido" placeholder="Apellido" />
+                    <input id="apellido" name="apellido" class="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="text" name="apellido" placeholder="Apellido" />
                 </div>
                 <div class="mb-4 text-lg">
-                    <input id="email" class="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="text" name="email" placeholder="Email" />
+                    <input id="email" name="email" class="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="text" name="email" placeholder="Email" />
                 </div>
                 <div class="mb-4 text-lg">
-                    <input id="contrasena" class="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="password" name="contrasena" placeholder="Contraseña" />
+                    <input id="pass" name="pass" class="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="password" name="contrasena" placeholder="Contraseña" />
                 </div>
                 <div class="mb-4 text-lg">
-                    <input id="repetirContrasena" class="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="password" name="repetirContrasena" placeholder="Repetir Contraseña" />
+                    <input id="repitePass" name="repitePass" class="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="password" name="repetirContrasena" placeholder="Repetir Contraseña" />
                 </div>
                 <div class="mb-8 flex flex-col items-center">
                     <h1 class="mb-2 text-sm" style="cursor: pointer"><a href="index.php">Ya tengo una cuenta</a></h1>

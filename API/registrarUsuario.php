@@ -23,6 +23,12 @@
         //Iniciamos la sesion
         session_start();
         $_SESSION['correo'] = $correo;
+        $conn->close();
+        header('Location: ../portada.php');
+    }
+    else{
+        $conn->close();
+        header('location: ../index.php');
     }
 
 ?>

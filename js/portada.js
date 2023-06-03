@@ -10,7 +10,11 @@ function moduloPerfil(){
         success: function(data){
             if(data.nombre!=""){
                 //La carga de datos ha sido buena
-                $("#fotoPerfil").attr('src', data.foto);
+                if(data.foto == null){
+                    $("#fotoPerfil").attr('src', 'imagenes/user.png');
+                }else{
+                    $("#fotoPerfil").attr('src', data.foto);
+                }
                 $("#nombrePerfil").text(data.nombre + " " + data.apellido);
                 $("#seguidores").text(data.seguidores);
                 $("#seguidos").text(data.seguidos);

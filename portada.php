@@ -17,6 +17,9 @@
             $nombre = $fila['nombre'];
             $apellido = $fila['apellido'];
             $foto = $fila['foto'];
+            if($foto == NULL){
+                $foto = "imagenes/user.png";
+            }
         }
     }
 
