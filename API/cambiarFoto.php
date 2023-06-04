@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Decodificar la imagen base64 y guardarla en el servidor
     $directorio = '../imagenes/';
-    $nombreArchivo = $_SESSION['ID'] . date("YmdHis") . '.jpg'; // Puedes ajustar el nombre del archivo según tus necesidades
+    $nombreArchivo = $_SESSION['ID'] . date("YmdHis") . '.jpg';
     $rutaArchivo = $directorio . $nombreArchivo;
 
     // Elimina el encabezado de datos de la imagen codificada en base64
@@ -22,7 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Decodifica y guarda la imagen en el servidor
     file_put_contents($rutaArchivo, base64_decode($imagenRecortadaBase64));
 
-    // Aquí puedes realizar otras operaciones con la imagen guardada
+    // Actualizar la base de datos
+    $consulta = "update usuarios set foto = '" . substr($rutaArchivo, 3) . "' where ID ='" . $_SESSION['ID'] . "';";
+    $conn->query($consulta);
 
     // Devolver una respuesta al cliente (opcional)
     $response = array('success' => true, 'message' => 'Imagen recortada guardada con éxito');

@@ -10,7 +10,7 @@
         exit();
     }else{
         //Sesion iniciada, cargamos los datos
-        include("api/conectar.php");
+        include("API/conectar.php");
         $consulta = "select * from usuarios where email = '" . $_SESSION['correo'] . "';";
         $resultado = $conn->query($consulta);
         while ($fila = mysqli_fetch_array($resultado)){
@@ -108,7 +108,9 @@
                 // Inicializa Cropper.js en la imagen
                 cropper = new Cropper($imgRecorte[0], {
                     aspectRatio: 1, // Establece un aspecto cuadrado para la selección
-                    viewMode: 3
+                    viewMode: 3,
+                    autoCrop: true,
+                    responsive: true
                 });
             }
 
@@ -118,7 +120,7 @@
                 var canvas = cropper.getCroppedCanvas();
 
                 // Convierte el lienzo en una imagen codificada en base64
-                var imageData = canvas.toDataURL('image/jpeg'); // Puedes ajustar el formato de imagen según tus necesidades
+                var imageData = canvas.toDataURL('image/jpeg');
 
                 // Crea un objeto FormData y agrega la imagen codificada
                 var formData = new FormData();
@@ -126,7 +128,7 @@
 
                 // Realiza la solicitud AJAX al archivo PHP
                 $.ajax({
-                    url: 'api/cambiarFoto.php',
+                    url: 'API/cambiarFoto.php',
                     type: 'POST',
                     data: formData,
                     processData: false,
@@ -140,7 +142,15 @@
                     console.error(error);
                     }
                 });
-                });
+
+                //Cierra la ventana de seleccion de imagenes
+                $("#contenedorRecorte").hide();
+                $("#imgRecorte").attr("src","");
+
+                //Actualiza las imagenes de la portada
+                $("#imagen_nav").attr("src", imageData);
+                $("#fotoPerfil").attr("src", imageData);
+            });
 
 
 

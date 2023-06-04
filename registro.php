@@ -65,7 +65,7 @@
                         //Todo está correcto asi que mandamos la comprobacion del correo
                         $.ajax({
                             type: 'POST',
-                            url: 'api/comprobarCorreo.php',
+                            url: 'API/comprobarCorreo.php',
                             data: {correo:correo},
                             dataType: 'json',
                             success: function(data){
@@ -100,7 +100,7 @@
                 <h1 class="mb-2 text-2xl">Social Web</h1>
                 <span class="text-gray-300">Diego Sánchez</span>
             </div>
-            <form id="formRegistro" action="api/registrarUsuario.php" method="POST">
+            <form id="formRegistro" action="API/registrarUsuario.php" method="POST">
                 <div class="mb-4 text-lg">
                     <input id="nombre" name="nombre" class="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="text" name="nombre" placeholder="Nombre" />
                 </div>

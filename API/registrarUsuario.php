@@ -14,6 +14,7 @@
     $resultado = $conn->query($consulta);
     while ($fila = mysqli_fetch_array($resultado)){
         $respuesta = 1;
+        $ID = $fila['ID'];
     }
 
     if($respuesta==0){
@@ -23,6 +24,7 @@
         //Iniciamos la sesion
         session_start();
         $_SESSION['correo'] = $correo;
+        $_SESSION['ID'] = $ID;
         $conn->close();
         header('Location: ../portada.php');
     }

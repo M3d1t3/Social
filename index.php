@@ -49,7 +49,7 @@
                 //Realizar una consulta Ajax para comprobar la validez de los datos
                 $.ajax({
                     type: 'POST',
-                    url: 'api/comprobarUsuario.php',
+                    url: 'API/comprobarUsuario.php',
                     data: {correo:correo,pass:pass},
                     dataType: 'json',
                     success: function(data){
