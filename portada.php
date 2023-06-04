@@ -112,6 +112,40 @@
                 });
             }
 
+            //Enviar la imagen y los datos de recorte a cambiarFoto.php
+            $("#btnAceptarRecorte").click(function() {
+                // Obtén la imagen recortada como un objeto de lienzo
+                var canvas = cropper.getCroppedCanvas();
+
+                // Convierte el lienzo en una imagen codificada en base64
+                var imageData = canvas.toDataURL('image/jpeg'); // Puedes ajustar el formato de imagen según tus necesidades
+
+                // Crea un objeto FormData y agrega la imagen codificada
+                var formData = new FormData();
+                formData.append('imagen', imageData);
+
+                // Realiza la solicitud AJAX al archivo PHP
+                $.ajax({
+                    url: 'api/cambiarFoto.php',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                    // Maneja la respuesta del servidor
+                    console.log(response);
+                    },
+                    error: function(xhr, status, error) {
+                    // Maneja los errores de la solicitud AJAX
+                    console.error(error);
+                    }
+                });
+                });
+
+
+
+
+
 
 
 
