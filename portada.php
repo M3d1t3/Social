@@ -39,12 +39,14 @@
     <link rel="stylesheet" href="css/portada.css">
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="js/portada.js"></script>
+    <link rel="stylesheet" href="node_modules/cropperjs/dist/cropper.css">
+    <script src="node_modules/cropperjs/dist/cropper.min.js"></script>
     <title>Red Social - Diego Sánchez</title>
     <script>
         $(document).ready(function(){
             //Procesar al iniciar la pagina-------------------------------------------------
             $("#bloque_spinner").hide();
-
+            $("#contenedorRecorte").hide();
 
             //Boton de cerrar sesion
             $("#btnCerrar").click(function(){
@@ -59,6 +61,66 @@
             //Boton del envio de nuevo post
             $("#btnForm").click(function(){
                 event.preventDefault();
+            });
+
+            //Abrir el cargador de fotos
+            $("#fotoPerfil").click(function() {
+                document.getElementById("inputFoto").click(); // Activar el input de tipo file
+            });
+
+            $("#btnCancelarRecorte").click(function(){
+                $("#contenedorRecorte").hide();
+            });
+
+            // Obtén una referencia al elemento de imagen y al contenedor del recorte
+            var $imgRecorte = $("#imgRecorte");
+            var $contenedorRecorte = $("#contenedorRecorte");
+
+            // Configuración de Cropper.js
+            var cropper;
+
+            // Función para inicializar Cropper.js en la imagen cargada
+            function initCropper() {
+                // Destruye la instancia de Cropper.js si ya existe
+                if (cropper) {
+                cropper.destroy();
+                $imgRecorte.data("cropper", null);
+                }
+
+                // Inicializa Cropper.js en la imagen
+                var cropper = new Cropper($imgRecorte[0], {
+                    aspectRatio: 1, // Establece un aspecto cuadrado para la selección
+                    viewMode: 3, // Configura el modo de vista para permitir una selección circular
+                    crop: recortarImagen // Función para manejar el evento de recorte
+                });
+            }
+
+            // Función para recortar la imagen
+            function recortarImagen(event) {
+                // Obtén las coordenadas del recorte
+                var data = cropper.getData();
+
+                // Realiza las operaciones necesarias con las coordenadas del recorte
+                // Aquí puedes enviar las coordenadas al servidor para guardar el recorte, mostrar una vista previa, etc.
+
+                // Ejemplo: Mostrar las coordenadas en la consola
+                console.log("Coordenadas de recorte:", data.x, data.y, data.width, data.height);
+            }
+
+            // Carga la imagen seleccionada en el elemento de imagen
+            $("#inputFoto").change(function() {
+                var file = this.files[0];
+                var reader = new FileReader();
+                $("#contenedorRecorte").show();
+                reader.onload = function(e) {
+                $imgRecorte.attr("src", e.target.result);
+                // Espera a que la imagen se cargue antes de inicializar Cropper.js
+                $imgRecorte.on("load", function() {
+                    initCropper();
+                });
+                };
+
+                reader.readAsDataURL(file);
             });
 
             moduloPerfil();
@@ -97,11 +159,21 @@
     </nav>
 
     <div id="bloque_principal">
+        <div id="contenedorRecorte">
+            <img id="imgRecorte" src="" alt="">
+            <div id="btnRecorte">
+                <button id="btnCancelarRecorte">Cancelar</button>
+                <button id="btnAceptarRecorte">Aceptar</button>
+            </div>
+        </div>
         <div id="pantalla_principal"><!--Pantalla principal de la red social-------------------------------------------------------------->
             <div class="modulo">
                 <div class="contenedor">
                     <!--Modulo del perfil de usuario-->
-                    <div id="bloqueFoto"><img id="fotoPerfil" style="max-width:25%;border-radius:50%;border:5px solid lightgrey;" src="" alt=""></div>
+                    <div id="bloqueFoto">
+                        <img id="fotoPerfil" style="max-width:25%;border-radius:50%;border:5px solid lightgrey;" src="" alt="">
+                        <input type="file" id="inputFoto" style="display: none;" accept="image/*" /><!--Bloque oculto para seleccion de imagen nueva-->
+                    </div>
                     <h1 id="nombrePerfil"></h1>
                     <div id="bloqueSegPerfil">
                         <div class="seguimientos" id="bloqueSeguidores"><h1 id="seguidores"></h1><h1 style="color: #A6ACAF;">Seguidores</h1></div>
