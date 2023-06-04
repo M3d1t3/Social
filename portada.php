@@ -68,8 +68,26 @@
                 document.getElementById("inputFoto").click(); // Activar el input de tipo file
             });
 
+            //Cancela la carga de la foto de perfil
             $("#btnCancelarRecorte").click(function(){
                 $("#contenedorRecorte").hide();
+                $("#imgRecorte").attr("src","");
+            });
+
+            // Carga la imagen seleccionada en el elemento de imagen
+            $("#inputFoto").change(function() {
+                var file = this.files[0];
+                var reader = new FileReader();
+                $("#contenedorRecorte").show();
+                reader.onload = function(e) {
+                    $imgRecorte.attr("src", e.target.result);
+                    // Espera a que la imagen se cargue antes de inicializar Cropper.js
+                    $imgRecorte.on("load", function() {
+                        initCropper();
+                    });
+                };
+
+                reader.readAsDataURL(file);
             });
 
             // Obtén una referencia al elemento de imagen y al contenedor del recorte
@@ -88,40 +106,14 @@
                 }
 
                 // Inicializa Cropper.js en la imagen
-                var cropper = new Cropper($imgRecorte[0], {
+                cropper = new Cropper($imgRecorte[0], {
                     aspectRatio: 1, // Establece un aspecto cuadrado para la selección
-                    viewMode: 3, // Configura el modo de vista para permitir una selección circular
-                    crop: recortarImagen // Función para manejar el evento de recorte
+                    viewMode: 3
                 });
             }
 
-            // Función para recortar la imagen
-            function recortarImagen(event) {
-                // Obtén las coordenadas del recorte
-                var data = cropper.getData();
 
-                // Realiza las operaciones necesarias con las coordenadas del recorte
-                // Aquí puedes enviar las coordenadas al servidor para guardar el recorte, mostrar una vista previa, etc.
 
-                // Ejemplo: Mostrar las coordenadas en la consola
-                console.log("Coordenadas de recorte:", data.x, data.y, data.width, data.height);
-            }
-
-            // Carga la imagen seleccionada en el elemento de imagen
-            $("#inputFoto").change(function() {
-                var file = this.files[0];
-                var reader = new FileReader();
-                $("#contenedorRecorte").show();
-                reader.onload = function(e) {
-                $imgRecorte.attr("src", e.target.result);
-                // Espera a que la imagen se cargue antes de inicializar Cropper.js
-                $imgRecorte.on("load", function() {
-                    initCropper();
-                });
-                };
-
-                reader.readAsDataURL(file);
-            });
 
             moduloPerfil();
             
