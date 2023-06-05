@@ -33,3 +33,24 @@ function moduloPerfil(){
 
     
 }
+
+
+//Cargar dentro de la matriz sugerencias todas las sugerencias posibles en base a los ultimos registros
+let sugerencias;
+
+function cargarSugerencias(){
+    $.ajax({
+        url: './API/sugerencias.php',
+        type: 'POST',
+        dataType: 'json',
+        success: function(response) {
+            sugerencias = response;
+        },
+        error: function(xhr, status, error) {
+          // Manejar los errores de la solicitud AJAX aquí
+          console.error(error);
+        }
+    });
+
+      
+}
