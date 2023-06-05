@@ -45,6 +45,7 @@ function cargarSugerencias(){
         dataType: 'json',
         success: function(response) {
             sugerencias = response;
+            console.log(sugerencias);
         },
         error: function(xhr, status, error) {
           // Manejar los errores de la solicitud AJAX aquí

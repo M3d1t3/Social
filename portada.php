@@ -228,9 +228,14 @@
                     </form>
                 </div>
             </div>
-            <div class="modulo">
-                <div class="contenedor">
+            <div class="modulo2">
+                <div class="contenedor2" id="bloqueSugerencias">
                     <!--Modulo con los posibles amigos, usa todo el ancho-->
+                    <div class="sugerencia">
+                        <img src="" alt="">
+                        <p></p>
+                        <button>Seguir</button>
+                    </div>
                 </div>
             </div>
             <div class="modulo">
