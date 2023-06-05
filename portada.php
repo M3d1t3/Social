@@ -50,7 +50,7 @@
 
             //Boton de cerrar sesion
             $("#btnCerrar").click(function(){
-                window.location.href = 'api/cerrarSesion.php';
+                window.location.href = 'API/cerrarSesion.php';
             });
 
             //Boton hamburguesa de despliegue de menu
@@ -158,8 +158,9 @@
 
 
 
-
+            //Carga de modulos de la portada
             moduloPerfil();
+            cargarSugerencias();
             
         });
     </script>

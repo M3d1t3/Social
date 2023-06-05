@@ -18,10 +18,13 @@
     }
 
     //Crear la sesion
-    session_start();
-    $_SESSION['correo'] = $correo;
-    $_SESSION['pass'] = $pass;
-    $_SESSION['ID'] = $ID;
+    if($code==1){
+        session_start();
+        $_SESSION['correo'] = $correo;
+        $_SESSION['pass'] = $pass;
+        $_SESSION['ID'] = $ID;
+    }
+    
 
 
     //Codificar el array en formato json

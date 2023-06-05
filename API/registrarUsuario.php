@@ -14,7 +14,6 @@
     $resultado = $conn->query($consulta);
     while ($fila = mysqli_fetch_array($resultado)){
         $respuesta = 1;
-        $ID = $fila['ID'];
     }
 
     if($respuesta==0){
@@ -24,7 +23,12 @@
         //Iniciamos la sesion
         session_start();
         $_SESSION['correo'] = $correo;
-        $_SESSION['ID'] = $ID;
+        //Conseguir el ID;
+        $consulta = "select * from usuarios where email = '" . $correo . "';";
+        $resultado = $conn->query($consulta);
+        while ($fila = mysqli_fetch_array($resultado)){
+            $_SESSION['ID'] = $fila['ID'];
+        }
         $conn->close();
         header('Location: ../portada.php');
     }
