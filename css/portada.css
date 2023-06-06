@@ -364,14 +364,17 @@ nav {
 
   #bloqueSugerencias{
     padding: 10px;
+    display: flex;
+    text-align: center;
+    overflow-x: auto;
   }
 
   .sugerencia {
-    display: flex;
+    display: inline-block;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-bottom: 20px;
+    margin: 0 10px;
 }
 
 .sugerencia img {
@@ -395,6 +398,8 @@ nav {
     border-radius: 5px;
     cursor: pointer;
 }
+
+
  
   @media (max-width: 768px) {
     #logo_nav img{

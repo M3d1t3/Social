@@ -231,11 +231,38 @@
             <div class="modulo2">
                 <div class="contenedor2" id="bloqueSugerencias">
                     <!--Modulo con los posibles amigos, usa todo el ancho-->
+                    <div class="flechaIzquierda"></div>
                     <div class="sugerencia">
                         <img src="" alt="">
-                        <p></p>
+                        <p>Diego Sanchez</p>
                         <button>Seguir</button>
                     </div>
+                    <div class="sugerencia">
+                        <img src="" alt="">
+                        <p>Diego Sanchez</p>
+                        <button>Seguir</button>
+                    </div>
+                    <div class="sugerencia">
+                        <img src="" alt="">
+                        <p>Diego Sanchez</p>
+                        <button>Seguir</button>
+                    </div>
+                    <div class="sugerencia">
+                        <img src="" alt="">
+                        <p>Diego Sanchez</p>
+                        <button>Seguir</button>
+                    </div>
+                    <div class="sugerencia">
+                        <img src="" alt="">
+                        <p>Diego Sanchez</p>
+                        <button>Seguir</button>
+                    </div>
+                    <div class="sugerencia">
+                        <img src="" alt="">
+                        <p>Diego Sanchez</p>
+                        <button>Seguir</button>
+                    </div>
+                    <div class="flechaDerecha"></div>
                 </div>
             </div>
             <div class="modulo">
