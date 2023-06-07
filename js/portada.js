@@ -61,8 +61,11 @@ function cargarSugerencias(){
 Al final crea un boton para ir a más sugerencias*/
 function moduloSugerencias(){
     let contenedorSugerencias = $("#bloqueSugerencias");
-
-    for (let i = 0; i < sugerencias.length; i++) {
+    let total = sugerencias.length;
+    if(total > 18){
+        total = 18;
+    }
+    for (let i = 0; i < total; i++) {//Ponemos un maximo de 18 elementos
         var sugerencia = sugerencias[i];
         
         // Crear el elemento de la sugerencia
@@ -89,10 +92,20 @@ function moduloSugerencias(){
         // Agregar la sugerencia al contenedor
         contenedorSugerencias.append(sugerenciaDiv);
     }
+
+    //Una vez puestas las sugerencias, se pone el boton de ver más sugeencias
+    sugerenciaDiv = $("<div>").addClass("sugerencia");
+    seguirBtn = $("<button>").text("Ver más").attr("data-id", -1);
+    sugerenciaDiv.append(seguirBtn);
+    seguirBtn.on("click", function() {
+        var usuarioId = $(this).attr("data-id");
+        seguirUsuario(usuarioId);
+    });
+    contenedorSugerencias.append(sugerenciaDiv);
 }
 
 function seguirUsuario(usuarioId) {
     // Aquí puedes implementar la lógica para seguir al usuario con el ID proporcionado
     // por ejemplo, puedes realizar una solicitud AJAX al servidor para enviar la solicitud de seguimiento
-    console.log("Siguiendo al usuario con ID:", usuarioId);
+    alert("Usuario con ID: " + usuarioId);
 }
