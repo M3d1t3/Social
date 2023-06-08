@@ -87,6 +87,7 @@ function moduloSugerencias(){
         seguirBtn.on("click", function() {
             var usuarioId = $(this).attr("data-id");
             seguirUsuario(usuarioId);
+            $(this).closest(".sugerencia").hide(600);
         });
 
         // Agregar la sugerencia al contenedor
@@ -105,7 +106,18 @@ function moduloSugerencias(){
 }
 
 function seguirUsuario(usuarioId) {
-    // Aquí puedes implementar la lógica para seguir al usuario con el ID proporcionado
-    // por ejemplo, puedes realizar una solicitud AJAX al servidor para enviar la solicitud de seguimiento
-    alert("Usuario con ID: " + usuarioId);
+    /*Hacer consulta de Ajax para seguir al usuario*/
+    $.ajax({
+        url: "API/seguirUsuario.php",
+        type: "POST",
+        data: { id: usuarioId },
+        dataType: "json",
+        success: function(response) {
+          console.log(response);
+        },
+        error: function(xhr, status, error) {
+          // Manejar los errores de la solicitud AJAX aquí
+          console.error(error);
+        }
+    });
 }
