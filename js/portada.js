@@ -72,7 +72,11 @@ function moduloSugerencias(){
         var sugerenciaDiv = $("<div>").addClass("sugerencia");
 
         // Crear la imagen de la foto
-        var fotoImg = $("<img>").attr("src", sugerencia.foto).attr("alt", "Foto de perfil");
+        if(sugerencia.foto == null){
+            var fotoImg = $("<img>").attr("src", "imagenes/user.png").attr("alt", "Foto de perfil");
+        }else{
+            var fotoImg = $("<img>").attr("src", sugerencia.foto).attr("alt", "Foto de perfil");
+        }
         sugerenciaDiv.append(fotoImg);
 
         // Crear el nombre y apellido

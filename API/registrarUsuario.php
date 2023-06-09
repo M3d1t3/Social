@@ -29,6 +29,10 @@
         while ($fila = mysqli_fetch_array($resultado)){
             $_SESSION['ID'] = $fila['ID'];
         }
+        //Incluir el ID en la lista de registros para salir como sugerencia
+        $consulta = "insert into registros (usuario) values ('" . $_SESSION['ID'] . "');";
+        $conn->query($consulta);
+        //Cerrar la conexion con la base de datos y redirigir
         $conn->close();
         header('Location: ../portada.php');
     }
