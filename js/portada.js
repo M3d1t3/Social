@@ -2,7 +2,6 @@
 
 function moduloPerfil(){
     /*Funcion para cargar el modulo del perfil de la portada*/
-    var datos;
     $.ajax({
         type: 'POST',
         url: './API/moduloPerfil.php',
@@ -118,10 +117,11 @@ function seguirUsuario(usuarioId) {
         dataType: "json",
         success: function(response) {
           console.log(response);
+          
         },
         error: function(xhr, status, error) {
           // Manejar los errores de la solicitud AJAX aquí
-          console.error(error);
+          console.log(xhr);
         }
     });
 }
