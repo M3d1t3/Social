@@ -89,8 +89,8 @@
                     <input id="pass" class="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="Password" name="name" placeholder="Password" />
                 </div>
 
-                <div id="error" class="error">
-                    <h1 id="mensajeError" class="hidden1">Los campos no pueden estar vacíos</h1>
+                <div id="error" class="error" style="display: none;">
+                    <h1 id="mensajeError" class="hidden1" >Los campos no pueden estar vacíos</h1>
                 </div>
 
                 <div class="mb-8 flex flex-col items-center">

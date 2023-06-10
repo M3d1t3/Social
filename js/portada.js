@@ -44,7 +44,6 @@ function cargarSugerencias(){
         dataType: 'json',
         success: function(response) {
             sugerencias = response;
-            console.log(sugerencias);
             moduloSugerencias();
         },
         error: function(xhr, status, error) {
@@ -88,9 +87,18 @@ function moduloSugerencias(){
 
         // Agregar el evento de clic al botón de seguir
         seguirBtn.on("click", function() {
+            event.stopPropagation();//Evita que se ejecuta el clic del div padre
             var usuarioId = $(this).attr("data-id");
             seguirUsuario(usuarioId);
             $(this).closest(".sugerencia").hide(600);
+        });
+
+        //Agregar el evento de clic al div
+        sugerenciaDiv.on("click", function() {
+            // Obtener el ID de la sugerencia
+            var sugerenciaId = $(this).find("button").attr("data-id");
+            // Llamar a la función para mostrar el perfil
+            verPerfil(sugerenciaId);
         });
 
         // Agregar la sugerencia al contenedor
@@ -117,11 +125,17 @@ function seguirUsuario(usuarioId) {
         dataType: "json",
         success: function(response) {
           console.log(response);
-          
+          moduloPerfil();
         },
         error: function(xhr, status, error) {
           // Manejar los errores de la solicitud AJAX aquí
           console.log(xhr);
         }
     });
+}
+
+function verPerfil(usuarioID){
+    /*Funcion que carga un perfil de usuario dentro del modulo
+    pantalla_visor_usuarios y lo carga*/
+    alert("Ver el perfil del usuario: " + usuarioID);
 }

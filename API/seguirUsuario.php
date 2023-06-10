@@ -29,4 +29,6 @@
     }
     $consulta = "update usuarios set seguidos = '" . $total . "' where ID = '" . $usuario . "';";
     $conn->query($consulta);
+
+    echo json_encode("Todo correcto");
 ?>
