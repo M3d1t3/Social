@@ -45,6 +45,11 @@
             $("#bloque_spinner").hide();
             $("#contenedorRecorte").hide();
             $("#pantalla_perfil").hide();
+            $("#pantalla_notificaciones").hide();
+            $("#pantalla_tendencias").hide();
+            $("#pantalla_configuracion").hide();
+            $("#pantalla_mensajes").hide();
+            $("#pantalla_visor_usuario").hide();
 
             //Boton de cerrar sesion
             $("#btnCerrar").click(function(){
@@ -164,6 +169,7 @@
                 $("#pantalla_tendencias").hide(600);
                 $("#pantalla_configuracion").hide(600);
                 $("#pantalla_mensajes").hide(600);
+                $("#pantalla_visor_usuario").hide(600);
                 $("#pantalla_principal").show(600);
                 $("#menu_desplegable").hide(300);
             });
@@ -173,6 +179,7 @@
                 $("#pantalla_tendencias").hide(600);
                 $("#pantalla_configuracion").hide(600);
                 $("#pantalla_mensajes").hide(600);
+                $("#pantalla_visor_usuario").hide(600);
                 $("#pantalla_perfil").show(600);
                 $("#menu_desplegable").hide(300);
             });
@@ -182,6 +189,7 @@
                 $("#pantalla_tendencias").hide(600);
                 $("#pantalla_perfil").hide(600);
                 $("#pantalla_mensajes").hide(600);
+                $("#pantalla_visor_usuario").hide(600);
                 $("#pantalla_configuracion").show(600);
                 $("#menu_desplegable").hide(300);
             });
@@ -264,10 +272,22 @@
             </div>
         </div>
         <div id="pantalla_perfil"><!--Pantalla para ver el perfil del usuario------------------------------------------------------------>
-            <h1>Esta es la pantalla del perfil del usuario</h1>
+            
         </div>
         <div id="pantalla_visor_usuario"><!--Pantalla para ver el perfil del usuario------------------------------------------------------------>
-            <h1>Esta es la pantalla que muestra los perfiles de otros usuarios</h1>
+        <div class="modulo">
+                <div class="contenedor">
+                    <div id="bloqueFotoAmigo">
+                        <img id="fotoPerfilAmigo" style="max-width:25%;border-radius:50%;border:5px solid lightgrey;" src="" alt="">
+                    </div>
+                    <h1 id="nombrePerfilAmigo"></h1>
+                    <div id="bloqueSegPerfil">
+                        <div class="seguimientos" id="bloqueSeguidoresAmigo"><h1 id="seguidoresAmigo"></h1><h1 style="color: #A6ACAF;">Seguidores</h1></div>
+                        <div class="seguimientos" id="bloqueSeguidosAmigo"><h1 id="seguidosAmigo"></h1><h1 style="color: #A6ACAF;">Seguidos</h1></div>
+                        <div class="seguimientos" id="bloquePostsAmigo"><h1 id="postsAmigo"></h1><h1 style="color: #A6ACAF;">Posts</h1></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="pantalla_notificaciones"><!--Pantalla para ver el las notificaciones del usuario------------------------------------------------------------>
 

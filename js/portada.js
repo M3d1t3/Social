@@ -137,5 +137,43 @@ function seguirUsuario(usuarioId) {
 function verPerfil(usuarioID){
     /*Funcion que carga un perfil de usuario dentro del modulo
     pantalla_visor_usuarios y lo carga*/
-    alert("Ver el perfil del usuario: " + usuarioID);
+    
+    $.ajax({
+        type: 'POST',
+        url: './API/moduloPerfilAmigo.php',
+        dataType: 'json',
+        data:{usuarioID:usuarioID},
+        success: function(data){
+            if(data.clave==0){
+                //La carga de datos ha sido buena
+                if(data.foto == null){
+                    $("#fotoPerfilAmigo").attr('src', 'imagenes/user.png');
+                }else{
+                    $("#fotoPerfilAmigo").attr('src', data.foto);
+                }
+                $("#nombrePerfilAmigo").text(data.nombre + " " + data.apellido);
+                $("#seguidoresAmigo").text(data.seguidores);
+                $("#seguidosAmigo").text(data.seguidos);
+                $("#postsAmigo").text(data.posts);
+                
+            }else{
+                //La carga de datos ha sido mala
+                alert("Carga de datos incorrecta, clave: " + data.clave);
+            }
+        },
+        error: function(xhr, status, errorThrown){
+            console.log("Estado: " + status);
+            console.log("Error: " + errorThrown);
+        }
+    });
+    
+
+
+    $("#pantalla_principal").hide(600);
+    $("#pantalla_notificaciones").hide(600);
+    $("#pantalla_tendencias").hide(600);
+    $("#pantalla_perfil").hide(600);
+    $("#pantalla_mensajes").hide(600);
+    $("#pantalla_configuracion").hide(600);
+    $("#pantalla_visor_usuario").show(600);
 }
