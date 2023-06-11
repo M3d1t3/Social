@@ -239,12 +239,12 @@
             <div class="modulo">
                 <div class="contenedor">
                     <!--Modulo del perfil de usuario-->
-                    <div id="bloqueFoto">
+                    <div id="bloqueFoto" class="bloqueFoto">
                         <img id="fotoPerfil" style="max-width:25%;border-radius:50%;border:5px solid lightgrey;" src="" alt="">
                         <input type="file" id="inputFoto" style="display: none;" accept="image/*" /><!--Bloque oculto para seleccion de imagen nueva-->
                     </div>
-                    <h1 id="nombrePerfil"></h1>
-                    <div id="bloqueSegPerfil">
+                    <h1 id="nombrePerfil" class="nombrePerfil"></h1>
+                    <div id="bloqueSegPerfil" class="bloqueSegPerfil">
                         <div class="seguimientos" id="bloqueSeguidores"><h1 id="seguidores"></h1><h1 style="color: #A6ACAF;">Seguidores</h1></div>
                         <div class="seguimientos" id="bloqueSeguidos"><h1 id="seguidos"></h1><h1 style="color: #A6ACAF;">Seguidos</h1></div>
                         <div class="seguimientos" id="bloquePosts"><h1 id="posts"></h1><h1 style="color: #A6ACAF;">Posts</h1></div>
@@ -276,12 +276,13 @@
         </div>
         <div id="pantalla_visor_usuario"><!--Pantalla para ver el perfil del usuario------------------------------------------------------------>
         <div class="modulo">
-                <div class="contenedor">
-                    <div id="bloqueFotoAmigo">
+                <div class="contenedor" style="position:relative">
+                    <div id="bloqueFotoAmigo" class="bloqueFoto">
                         <img id="fotoPerfilAmigo" style="max-width:25%;border-radius:50%;border:5px solid lightgrey;" src="" alt="">
                     </div>
-                    <h1 id="nombrePerfilAmigo"></h1>
-                    <div id="bloqueSegPerfil">
+                    <h1 id="btnSeguirPerfil"></h1>
+                    <h1 id="nombrePerfilAmigo" class="nombrePerfil"></h1>
+                    <div id="bloqueSegPerfil" class="bloqueSegPerfil">
                         <div class="seguimientos" id="bloqueSeguidoresAmigo"><h1 id="seguidoresAmigo"></h1><h1 style="color: #A6ACAF;">Seguidores</h1></div>
                         <div class="seguimientos" id="bloqueSeguidosAmigo"><h1 id="seguidosAmigo"></h1><h1 style="color: #A6ACAF;">Seguidos</h1></div>
                         <div class="seguimientos" id="bloquePostsAmigo"><h1 id="postsAmigo"></h1><h1 style="color: #A6ACAF;">Posts</h1></div>
