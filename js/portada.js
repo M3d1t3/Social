@@ -155,7 +155,11 @@ function verPerfil(usuarioID){
                 $("#seguidoresAmigo").text(data.seguidores);
                 $("#seguidosAmigo").text(data.seguidos);
                 $("#postsAmigo").text(data.posts);
-                
+                if(data.amigo == 0){
+                    $("#btnSeguirPerfil").text("Seguir").attr("alt", "Foto de perfil");;
+                }else{
+                    $("#btnSeguirPerfil").text("Dejar de seguir");
+                }
             }else{
                 //La carga de datos ha sido mala
                 alert("Carga de datos incorrecta, clave: " + data.clave);
